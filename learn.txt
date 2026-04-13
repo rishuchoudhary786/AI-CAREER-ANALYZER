@@ -1,0 +1,26 @@
+venv // virtual environment
+
+A > flask 3
+b > flask 3           // both shows clashes without virtual environment
+
+with venv
+
+pip install flask(for web applications) sqlalchemy(handling database) pymysql(connecting tidb) openai(for using ai) PyPDF2(uploading resume) python-docx(reading doc file)
+
+step1 - setup
+
+step2 - database connection
+
+mysql+mysqldb://3w2cVGUPNMb1Hue.root:<PASSWORD>@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test?ssl_mode=VERIFY_IDENTITY&ssl_ca=<CA_PATH>
+PASSWORD = eZZvOKsh48V35upt
+
+
+mysql+mysqldb://2SXp7GmUsf3NjG4.root:<PASSWORD>@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test?ssl_mode=VERIFY_IDENTITY&ssl_ca=<CA_PATH>
+rJ77Cb4jWWHg9MSc
+
+mysql+pymysql://2SXp7GmUsf3NjG4.root:<PASSWORD>@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test?ssl_ca=<CA_PATH>&ssl_verify_cert=true&ssl_verify_identity=true
+
+mysql+mysqlconnector://2SXp7GmUsf3NjG4.root:<PASSWORD>@gateway01.ap-southeast-1.prod.aws.tidbcloud.com:4000/test?ssl_ca=<CA_PATH>&ssl_verify_cert=true&ssl_verify_identity=
+
+
+Groq Api key = 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
