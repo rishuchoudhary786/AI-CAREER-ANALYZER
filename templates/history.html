@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>History</h2>
+
+{% if not reports %}
+<div class="card" style="text-align: center; padding: 60px 20px; margin-top: 40px;">
+    <h2 style="color: #94a3b8; font-size: 24px;">No History Found 📉</h2>
+    <p style="color: var(--text-muted); margin-bottom: 30px;">You haven't run any AI Career analyses yet.</p>
+    <a href="/dashboard" style="background: linear-gradient(to right, var(--primary), var(--secondary)); padding: 12px 24px; color: white; text-decoration: none; border-radius: 12px; font-weight: bold; display: inline-block; transition: 0.2s;">Start your first Analysis</a>
+</div>
+{% endif %}
+
+{% for r in reports %}
+<div class="card">
+    <p><strong>Resume Preview: </strong></p>
+    <p>{{ r.resume[:150] }}</p>
+
+    <div class="score-container" style="text-align: center; margin-bottom: 24px;">
+        <div class="score-circle" style="display: inline-flex; align-items: center; justify-content: center; width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--primary), var(--secondary)); font-size: 24px; font-weight: bold; box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);">
+            Score: {{ r.result.get("resume_score", 0) }}
+        </div>
+    </div>
+
+    <div class="results-grid">
+        <div class="result-card" style="grid-column: 1 / -1;">
+            <h3>📝 Content Feedback</h3>
+            <ul>
+                {% for s in r.result.get("resume_feedback", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h3>🎯 Skills</h3>
+            <ul>
+                {% for s in r.result.get("skills", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h3>⚠️ Missing Skills</h3>
+            <ul>
+                {% for s in r.result.get("missing_skills", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h3>💬 Interview Prep</h3>
+            <ul>
+                {% for s in r.result.get("interview_preparation", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h3>🗺️ Roadmap</h3>
+            <ul>
+                {% for s in r.result.get("roadmap", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h3>🚀 Project Ideas</h3>
+            <ul>
+                {% for s in r.result.get("project_ideas", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="result-card">
+            <h3>📜 Certifications</h3>
+            <ul>
+                {% for s in r.result.get("certifications", []) %}
+                <li>{{ s }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+{% endfor %}
+
+{% endblock %}
